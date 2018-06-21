@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js" ></script>  
+    <link rel='stylesheet' href='/stylesheets/style.css' >
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css" >
+</head>
+  <body>
+    
+    <div>
+    	<span><label><%= title %></label></span>
+    	<span><a href="/contact" class="button">New</a></span>
+    	<span><label>Search</label></span>
+    	<span><textarea></textarea></span>
+    </div>
+    <div>
+	    <table data-toggle="table">
+	    <thead>
+	        <tr>
+	            <th>Username</th>
+	            <th>Name</th>
+	            <th>TA</th>
+	            <th>TS</th>
+	            <th>Status</th>
+	            <th>Phone</th>
+	            <th>Email</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>1</td>
+	            <td>Item 1</td>
+	            <td>$1</td>
+	            <td>1</td>
+	            <td>Item 1</td>
+	            <td>$1</td>
+	            <td>$1</td>
+	        </tr>
+	        <tr>
+	            <td>2</td>
+	            <td>Item 2</td>
+	            <td>$2</td>
+	            <td>1</td>
+	            <td>Item 1</td>
+	            <td>$1</td>
+	            <td>$1</td>
+	        </tr>
+	    </tbody>
+
+	</table>
+	</div>
+  </body>
+</html>
