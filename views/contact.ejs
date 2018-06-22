@@ -2,26 +2,123 @@
 <html>
   <head>
     <title>contact</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js" ></script>  
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" >
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to tt<%= title %></p>
-    <div class="form-header">
-  <h2>Send us a message</h2>
+	<div>
+		<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Creator Id</td>
+                <td><input type="text" id="row-1-age" name="row-1-age"></td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td><input type="text" id="row-2-age" name="row-2-age"></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" id="row-3-age" name="row-3-age"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" id="row-4-age" name="row-4-age"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="text" id="row-5-age" name="row-5-age"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" id="row-6-age" name="row-6-age"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" id="row-7-age" name="row-7-age"></td>
+            </tr>
+            <tr>
+                <td>Birthday</td>
+                <td><input type="text" id="row-8-age" name="row-8-age"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" id="row-9-age" name="row-9-age"></td>
+            </tr>
+            <tr>
+                <td>Region</td>
+                <td><input type="text" id="row-10-age" name="row-10-age"></td>
+            </tr>
+            <tr>
+                <td>Social Media</td>
+                <td><input type="text" id="row-11-age" name="row-11-age"></td>
+            </tr>
+            <tr>
+                <td>Social Media Followers</td>
+                <td><input type="text" id="row-12-age" name="row-12-age"></td>
+
+            </tr>
+            <tr>
+                <td>Category #1</td>
+                <td><input type="text" id="row-13-age" name="row-13-age"></td>
+            </tr>
+            <tr>
+                <td>Category #2</td>
+                <td><input type="text" id="row-14-age" name="row-14-age"></td>
+            </tr>
+            <tr>
+                <td>Category #3</td>
+                <td><input type="text" id="row-15-age" name="row-15-age"></td>
+            </tr>
+            <tr>
+                <td>TA</td>
+                <td><input type="text" id="row-16-age" name="row-16-age"></td>
+            </tr>
+            <tr>
+                <td>TS</td>
+                <td><input type="text" id="row-17-age" name="row-17-age"></td>
+            </tr>
+            <tr>
+                <td>Current Status Name</td>
+                <td><input type="text" id="row-18-age" name="row-18-age"></td>
+            </tr>
+            <tr>
+                <td>Current Status Date</td>
+                <td><input type="text" id="row-19-age" name="row-19-age"></td>
+            </tr>
+            <tr>
+                <td>Current Status </td>
+                <td><input type="text" id="row-20-age" name="row-20-age"></td>
+            </tr>
+        </tbody>
+    </table>
 	</div>
-	<form method="post" action="/contact" novalidate>
-	  <div class="form-field">
-	    <label for="message">Message</label>
-	    <textarea class="input" id="message" name="message" rows="4" autofocus></textarea>
-	  </div>
-	  <div class="form-field">
-	    <label for="email">Email</label>
-	    <input class="input" id="email" name="email" type="email" value="" />
-	  </div>
-	  <div class="form-actions">
-	    <button class="btn" type="submit">Send</button>
-	  </div>
-	</form>
+	<div>
+		<button type="submit" >Submit</button>
+	</div>
+	<script>
+		  $(document).ready(function() {
+		    var table = $('#example').DataTable();
+		 
+		    $('button').click( function() {
+		        var data = table.$('input, select').serialize();
+		        alert(
+		            "The following data would have been submitted to the server: \n\n"+
+		            data.substr( 0, 120 )+'...'
+		        );
+		        return false;
+		    } );
+		} );
+  	</script>
   </body>
+
 </html>
