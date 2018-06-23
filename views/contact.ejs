@@ -108,7 +108,11 @@
 	</div>
 	<script>
 		  $(document).ready(function() {
-		    var table = $('#example').DataTable();
+		    var table = $('#example').DataTable({
+		    	"paging": false,
+		    	"bInfo" : false,
+		    	"searching": false
+		    });
 		 
 		    $('button').click( function() {
 		        var data = table.$('input, select').serialize();
