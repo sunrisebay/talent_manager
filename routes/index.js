@@ -11,24 +11,29 @@ const config = {
 // pool takes the object above -config- as parameter
 const pool = new pg.Pool(config);
 
+var re;
+router.post('/getUsersData', function(req, res){
+	pool.connect(function (err, client, done) {
+	   if (err) {
+	       console.log("Can not connect to the DB" + err);
+	   }
+	   client.query('SELECT * FROM testtable', function (err, result) {
+	        done();
+	        if (err) {
+	            console.log(err);
+	        }
+	        var talent = JSON.stringify(result.rows);
+		    res.end(talent);
+	   })
+	});
 
-pool.connect(function (err, client, done) {
-   if (err) {
-       console.log("Can not connect to the DB" + err);
-   }
-   client.query('SELECT * FROM testtable', function (err, result) {
-        done();
-        if (err) {
-            console.log(err);
-        }
-        console.log(result.rows);
-   })
 });
+
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Talent' });
+  res.render('index', { title: 'Talent'});
 });
 
 
