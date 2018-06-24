@@ -20,84 +20,94 @@
         <tbody>
             <tr>
                 <td>Creator Id</td>
-                <td><input type="text" id="row-1-age" name="row-1-age"></td>
+                <td><input type="text" id="creatorid" name="creatorid"></td>
             </tr>
             <tr>
                 <td>Username</td>
-                <td><input type="text" id="row-2-age" name="row-2-age"></td>
+                <td><input type="text" id="username" name="username"></td>
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><input type="text" id="row-3-age" name="row-3-age"></td>
+                <td><input type="text" id="firstname" name="firstname"></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input type="text" id="row-4-age" name="row-4-age"></td>
+                <td><input type="text" id="lastname" name="lastname"></td>
             </tr>
             <tr>
                 <td>Gender</td>
-                <td><input type="text" id="row-5-age" name="row-5-age"></td>
+                <td><select id="gender" name="gender">
+					  <option value ="male">Male</option>
+					  <option value ="female">Female</option>
+					</select>
+				</td>
             </tr>
             <tr>
                 <td>Phone</td>
-                <td><input type="text" id="row-6-age" name="row-6-age"></td>
+                <td><input type="tel" id="phone" name="phone"
+			           minlength="9" maxlength="14" />
+			    </td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td><input type="text" id="row-7-age" name="row-7-age"></td>
+                <td><input type="text" id="email" name="email"></td>
             </tr>
             <tr>
                 <td>Birthday</td>
-                <td><input type="text" id="row-8-age" name="row-8-age"></td>
+                <td>
+                	<input type="date" id="birthday" name="birthday"
+		               value="2018-01-01"/>
+		        </td>
             </tr>
             <tr>
                 <td>Age</td>
-                <td><input type="text" id="row-9-age" name="row-9-age"></td>
+                <td><input type="text" id="age" name="age"></td>
             </tr>
             <tr>
                 <td>Region</td>
-                <td><input type="text" id="row-10-age" name="row-10-age"></td>
+                <td><input type="text" id="region" name="region"></td>
             </tr>
             <tr>
                 <td>Social Media</td>
-                <td><input type="text" id="row-11-age" name="row-11-age"></td>
+                <td><input type="text" id="socialmedia" name="socialmedia"></td>
             </tr>
             <tr>
                 <td>Social Media Followers</td>
-                <td><input type="text" id="row-12-age" name="row-12-age"></td>
+                <td><input type="text" id="socialmediafollower" name="socialmediafollower"></td>
 
             </tr>
             <tr>
                 <td>Category #1</td>
-                <td><input type="text" id="row-13-age" name="row-13-age"></td>
+                <td><input type="text" id="category1" name="category1"></td>
             </tr>
             <tr>
                 <td>Category #2</td>
-                <td><input type="text" id="row-14-age" name="row-14-age"></td>
+                <td><input type="text" id="category2" name="category2"></td>
             </tr>
             <tr>
                 <td>Category #3</td>
-                <td><input type="text" id="row-15-age" name="row-15-age"></td>
+                <td><input type="text" id="category3" name="category3"></td>
             </tr>
             <tr>
                 <td>TA</td>
-                <td><input type="text" id="row-16-age" name="row-16-age"></td>
+                <td><input type="text" id="ta" name="ta"></td>
             </tr>
             <tr>
                 <td>TS</td>
-                <td><input type="text" id="row-17-age" name="row-17-age"></td>
+                <td><input type="text" id="ts" name="ts"></td>
             </tr>
             <tr>
                 <td>Current Status Name</td>
-                <td><input type="text" id="row-18-age" name="row-18-age"></td>
+                <td><input type="text" id="currentstatusname" name="currentstatusname"></td>
             </tr>
             <tr>
                 <td>Current Status Date</td>
-                <td><input type="text" id="row-19-age" name="row-19-age"></td>
+                <td><input type="date" id="currentstatusdate" name="currentstatusdate"
+		               value="2018-01-01"/></td>
             </tr>
             <tr>
                 <td>Current Status </td>
-                <td><input type="text" id="row-20-age" name="row-20-age"></td>
+                <td><input type="text" id="curretstatus" name="curretstatus"></td>
             </tr>
         </tbody>
     </table>
@@ -111,16 +121,20 @@
 		    var table = $('#example').DataTable({
 		    	"paging": false,
 		    	"bInfo" : false,
-		    	"searching": false
+		    	"searching": false,
+		    	"ordering": false
 		    });
 		 
 		    $('button').click( function() {
 		        var data = table.$('input, select').serialize();
-		        alert(
-		            "The following data would have been submitted to the server: \n\n"+
-		            data.substr( 0, 120 )+'...'
-		        );
-		        return false;
+		        $.ajax({
+				      type: 'POST',
+				      url: '/contact/sendUserData',
+				      data: data,
+				      success: function(resultData) {
+				         alert(resultData);
+				      }
+				    });
 		    } );
 		} );
   	</script>

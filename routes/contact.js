@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/', function(req, res) {
+router.post('/sendUserData', function(req, res) {
 	console.log(req.body);
   res.render('thankyou', {
   	title: 'Contact Me',
