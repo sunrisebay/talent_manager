@@ -20,14 +20,18 @@ router.get('/', function(req, res) {
 });
 
 router.post('/sendUserData', function(req, res) {
-	var sql_query = getQuery(req.body);
 	(async () => {
 
 	  const client = await pool.connect()
 
 	  try {
 	    await client.query('BEGIN')
-	    const { rows } = await client.query('INSERT INTO talent(creatorid) VALUES($1) ', [req.body.creatorid])
+	    const { rows } = await client.query('INSERT INTO talent VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) ', 
+	    	[req.body.creatorid, req.body.username, req.body.firstname + " " + req.body.lastname, 
+	    	req.body.ta , req.body.ts, req.body.curretstatus,
+	    	"dummy a", "dummy b", req.body.phone,
+	    	req.body.email, req.body.region, 
+	    	req.body.category1 + "," + req.body.category2 + "," + req.body.category3  ])
 
 	    await client.query('COMMIT')
 	  } catch (e) {
@@ -39,21 +43,5 @@ router.post('/sendUserData', function(req, res) {
 	})().catch(e => console.error(e.stack))
 
 });
-
-var getQuery = function (bodystring) {
-	var query = "insert into talent values('" + bodystring.creatorid 
-		+ "','" + bodystring.username
-		+"','" + bodystring.firstname + " " + bodystring.lastname
-		+"','" + bodystring.ta 
-		+"','" + bodystring.ts
-		+"','" + bodystring.curretstatus 
-		+"','dummy 6/19/18','dummy last feedback','"+ bodystring.phone
-		+"','" + bodystring.email
-		+"','" + bodystring.region
-		+"','" + bodystring.category1 + "," + bodystring.category2 + "," + bodystring.category3 
-		+"')";
-	return "";
-}
-
 
 module.exports = router;
