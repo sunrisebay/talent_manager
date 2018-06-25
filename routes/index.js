@@ -17,7 +17,7 @@ router.post('/getUsersData', function(req, res){
 	   if (err) {
 	       console.log("Can not connect to the DB" + err);
 	   }
-	   client.query('SELECT * FROM testtable', function (err, result) {
+	   client.query('SELECT * FROM talent', function (err, result) {
 	        done();
 	        if (err) {
 	            console.log(err);
