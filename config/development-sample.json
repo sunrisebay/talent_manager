@@ -1,0 +1,8 @@
+{
+	"dbconfig": {
+	    "user": "yourusername",
+	    "database": "yourdb",
+	    "password": "yourpassword",
+	    "port": "yourport"
+	}
+}
