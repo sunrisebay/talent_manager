@@ -4,7 +4,9 @@
     <title>contact</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js" ></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js" ></script>
+    <script type="text/javascript" src="/javascripts/json_utils.js" ></script>  
+  
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" >
 
   </head>
@@ -69,7 +71,7 @@
             </tr>
             <tr>
                 <td>Social Media</td>
-                <td><input type="text" id="socialmedia" name="socialmedia"></td>
+                <td><select name="socialmedia" id="socialmedia"></select></td>
             </tr>
             <tr>
                 <td>Social Media Followers</td>
@@ -94,7 +96,7 @@
             </tr>
             <tr>
                 <td>TS</td>
-                <td><input type="text" id="ts" name="ts"></td>
+                <td><select name="ts" id="ts"></select></td>
             </tr>
             <tr>
                 <td>Current Status Name</td>
@@ -136,7 +138,17 @@
 				      }
 				    });
 		    } );
+            var ts = decodeJSON("<%= tsData %>");
+            $.each(ts, function(key, value){
+                    $("select#ts").append( $("<option />").val(value['name']).text(value['name']) );
+              });
+            var socialmedia = decodeJSON("<%= socialMediaData %>");
+            $.each(socialmedia, function(key, value){
+                    $("select#socialmedia").append( $("<option />").val(value['name']).text(value['name']) );
+              });
+
 		} );
+
   	</script>
   </body>
 

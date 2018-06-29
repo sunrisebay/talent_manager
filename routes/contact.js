@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var database = require('../middleware/database.js')
-const { add } = require('../middleware/database.js')
+var jsonUtils = require('../helpers/jsonObjectHelper.js')
+const { add, getTsInfo, getSocialMediaData } = require('../middleware/database.js')
 
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
+  let tsData = await getTsInfo();
+  let socialMediaData = await getSocialMediaData();
   res.render('contact', {
   	title: 'Contact',
-    data: {},
-    errors: {}
+    tsData: jsonUtils.encodeJSON(tsData.rows),
+    socialMediaData: jsonUtils.encodeJSON(socialMediaData.rows)
   });
 });
 

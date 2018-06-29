@@ -35,6 +35,16 @@ let add = function(values) {
 	return query(sql, values);   	
 }
 
-module.exports = { select, add }
+let getTsInfo = function() {
+	let sql = 'SELECT name FROM info_ts';
+	return query(sql);
+}
+
+let getSocialMediaData = function() {
+  let sql = 'SELECT * FROM info_social_media';
+  return query(sql);
+}
+
+module.exports = { select, add, getTsInfo, getSocialMediaData }
 
 
